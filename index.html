@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="smt-actions.js" defer></script>
+    <script src="smt.js" defer></script>
+    <title>Smart meeting timer</title>
+</head>
+
+<body class="d-flex" onload="init()">
+    <div class="bg-light vh-100 p-4" style="max-width: 470px;min-width: 470px;">
+        <h2 class="pb-3">Smart meeting timer</h2>
+        <form>
+            <label class="form-label" for="hours">End Time</label>
+            <div class="input-group mb-3 input-group-lg" id="timetill-group">
+                <input type="text" class="form-control fw-bold" id="hours" maxlength="2" onchange="changeMeetingTill()">
+                <span class="input-group-text">:</span>
+                <input type="text" class="form-control fw-bold" id="minutes" maxlength="2" onchange="changeMeetingTill()">
+                <button type="button" class="btn btn-outline-secondary" onclick="adjustTime(-5)">-5m</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="adjustTime(15)">+15m</button>
+            </div>
+            <label class="form-label" for="num-speakers">Speakers' Queue</label>
+            <div class="input-group mb-3 input-group-lg" id="num-speakers-group">
+                <input type="text" class="form-control fw-bold" id="num-speakers" maxlength="2" onchange="changeNumberOfSpeekers()" value="0">
+                <button type="button" class="btn btn-outline-secondary" onclick="adjustSpeakers(-1)">-</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="adjustSpeakers(1)">+</button>
+            </div>
+            <button type="button" class="btn btn-success btn-lg mt-3" onclick="giveFloor()" id="giveFloorButton">Give The Floor</button>
+        </form>
+    </div>
+    <div class="vh-100 bg-dark d-flex justify-content-center align-items-center w-100" style="background-size: cover;background-repeat: no-repeat; background-position: center center;min-width: 800px" id="mainZone">
+       <div class="text-muted font-monospace alert alert-primary rounded-3 p-4 bg-light bg-opacity-75" style="font-size:15em;user-select:none;" id="countdown"><span id="countdownMin">00</span>˸<span id="countdownSec">00</span></div>
+    </div>
+</body>
+
+</html>
